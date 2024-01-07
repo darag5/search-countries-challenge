@@ -1,7 +1,8 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
 // import { connectDB } from './config/db.js';
-import router from './routes/routes.js';
+import { countryRouter } from './routes/countryRoutes.js';
 
 const app = express();
 app.disable('x-powered-by');
@@ -11,7 +12,8 @@ dotenv.config();
 const PORT = process.env.PORT || 3000;
 const MONGODB_URI = process.env.MONGODB_URI;
 
-app.use('/countries', router);
+app.use(cors());
+app.use('/countries', countryRouter);
 
 app.use((req, res) => {
   res.status(404).send('<h1>Not found</h1>');
