@@ -1,8 +1,12 @@
 import express from 'express';
-import { getCountries } from '../controllers/CountryController.js';
+import {
+  getAllCountries,
+  getFilteredCountries,
+} from '../controllers/country.js';
 
 const router = express.Router();
 
-router.get('/', getCountries);
+router.get('/', getAllCountries);
+router.get('/search', getFilteredCountries);
 
 export default router;
