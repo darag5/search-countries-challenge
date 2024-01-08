@@ -47,7 +47,7 @@ export class CountryModel {
       return countries.map(({ name, population }) => ({
         name,
         population,
-        populationTotalPercentage: (population / populationTotal) * 100,
+        populationTotalPercentage: (population * 100) / populationTotal,
       }));
     }
 
