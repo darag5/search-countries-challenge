@@ -1,4 +1,4 @@
-import { CountryModel } from '../models/countryModel.js';
+import { CountryModel } from '../models/local-file/countryModel.js';
 
 export const getAll = async (req, res) => {
   const result = await CountryModel.getAll();
