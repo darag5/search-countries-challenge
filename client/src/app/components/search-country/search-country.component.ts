@@ -1,130 +1,49 @@
-import { Component, OnInit } from '@angular/core';
-import { reduce } from 'rxjs';
+import { Component, inject } from '@angular/core';
 
 // models
 import { Country } from 'src/app/models/country.model';
+
+// services
+import { CountryService } from 'src/app/services/country.service';
 
 @Component({
   selector: 'app-search-country',
   templateUrl: './search-country.component.html',
   styleUrls: ['./search-country.component.css'],
 })
-export class SearchCountryComponent implements OnInit {
+export class SearchCountryComponent {
   countries: Country[] = [];
-  countries: Country[] = [
-    {
-      keyName: 'IND',
-      name: 'India',
-      population: 1409902000,
-    },
-    {
-      keyName: 'CHN',
-      name: 'China',
-      population: 1403426000,
-    },
-    {
-      keyName: 'USA',
-      name: 'Estados Unidos',
-      population: 331800000,
-    },
-    {
-      keyName: 'IDN',
-      name: 'Indonesia',
-      population: 271629000,
-    },
-    {
-      keyName: 'PAK',
-      name: 'Pakistán',
-      population: 224654000,
-    },
-    {
-      keyName: 'NGA',
-      name: 'Nigeria',
-      population: 219743000,
-    },
-    {
-      keyName: 'BRA',
-      name: 'Brasil',
-      population: 211420000,
-    },
-    {
-      keyName: 'BGD',
-      name: 'Bangladés',
-      population: 181781000,
-    },
-    {
-      keyName: 'RUS',
-      name: 'Rusia',
-      population: 146712000,
-    },
-    {
-      keyName: 'MEX',
-      name: 'México',
-      population: 127792000,
-    },
-    {
-      keyName: 'JPN',
-      name: 'Japón',
-      population: 126045000,
-    },
-    {
-      keyName: 'PHL',
-      name: 'Filipinas',
-      population: 108772000,
-    },
-    {
-      keyName: 'EGY',
-      name: 'Egipto',
-      population: 101000000,
-    },
-    {
-      keyName: 'ETF',
-      name: 'Etiopía',
-      population: 100882000,
-    },
-    {
-      keyName: 'VDR',
-      name: 'Vietnam',
-      population: 97591000,
-    },
-    {
-      keyName: 'COG',
-      name: 'República del Congo',
-      population: 89561000,
-    },
-    {
-      keyName: '',
-      name: 'Irán',
-      population: 83914000,
-    },
-    {
-      keyName: 'TUR',
-      name: 'Turquía',
-      population: 83752000,
-    },
-    {
-      keyName: 'DEU',
-      name: 'Alemania',
-      population: 83421000,
-    },
-    {
-      keyName: 'THA',
-      name: 'Tailandia',
-      population: 68232000,
-    },
-  ];
+  filteredCountries: Country[] = [];
+  showPopulationTotalPercentage = false;
+  countryService = inject(CountryService);
 
-  ngOnInit(): void {
-    if (this.countries.length) {
-      const populationTotal = this.countries.reduce(
-        (accumulator, currentValue) => accumulator + currentValue.population,
-        0
-      );
+  constructor() {
+    this.getAllCountries();
+  }
 
-      this.countries.forEach((country) => {
-        country.populationTotalPercentage =
-          (country.population / populationTotal) * 100;
-      });
+  getAllCountries() {
+    this.countryService.getAll().subscribe({
+      next: (data) => {
+        this.showPopulationTotalPercentage = false;
+        this.countries = data;
+        this.filteredCountries = data;
+      },
+      error: (error) => console.log(error),
+    });
+  }
+
+  filterResults(filter: string) {
+    if (!filter) {
+      this.filteredCountries = this.countries;
+      return;
     }
+
+    this.countryService.getFilteredCountries(filter).subscribe({
+      next: (data) => {
+        this.filteredCountries = data;
+        this.showPopulationTotalPercentage = true;
+      },
+      error: (error) => console.log(error),
+    });
   }
 }
