@@ -35,6 +35,7 @@ export class SearchCountryComponent {
   filterResults(filter: string) {
     if (!filter) {
       this.filteredCountries = this.countries;
+      this.showPopulationTotalPercentage = false;
       return;
     }
 
