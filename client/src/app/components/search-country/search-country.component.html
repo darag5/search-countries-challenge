@@ -1,5 +1,5 @@
 <div class="container-fluid mt-5 d-flex flex-row justify-content-center align-content-center">
-  <div class="card">
+  <div class="card" style="width: 50%;">
     <div class="card-body">
       <form class="d-flex" role="search">
         <input class="form-control me-2" id="search" type="search" placeholder="Buscar Países" #filter />
@@ -18,7 +18,8 @@
             <tr *ngFor="let country of filteredCountries">
               <td>{{ country.name }}</td>
               <td>{{ country.population | number: '':'es-AR' }}</td>
-              <td *ngIf="showPopulationTotalPercentage">{{ country.populationTotalPercentage | number: '1.0-0':'es-AR'
+              <td *ngIf="showPopulationTotalPercentage">{{ country.populationTotalPercentage | number:
+                '1.0-0':'es-AR'
                 }}
               </td>
             </tr>
@@ -26,7 +27,7 @@
         </table>
       </ng-container>
       <ng-template #templateNoResults>
-        <h4 class="mt-3">No se encontraron países que coincidan con la búsqueda</h4>
+        <h4 class="mt-3">No se encontraron resultados</h4>
       </ng-template>
     </div>
   </div>

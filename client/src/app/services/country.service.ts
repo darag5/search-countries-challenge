@@ -7,7 +7,7 @@ import { Country } from '../models/country.model';
   providedIn: 'root',
 })
 export class CountryService {
-  private url = 'http://localhost:3000/countries';
+  private url = 'http://localhost:3000/api/countries';
   http = inject(HttpClient);
 
   getAll(): Observable<Country[]> {
