@@ -1,5 +1,5 @@
 ### Obtener todos los países
-GET http://localhost:3000/countries
+GET http://localhost:3000/api/countries
 
 ### Obtener todos los países filtrados por una cadena de texto de al menos 3 caracteres
-GET http://localhost:3000/countries/search?filter=ina
+GET http://localhost:3000/api/countries/search?filter=ina

@@ -1,6 +1,6 @@
 import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
-const countries = require('../../data/countries.json');
+const countries = require('../../../data/countries.json');
 
 export class CountryModel {
   static async getAll() {
