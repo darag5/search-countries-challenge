@@ -1,5 +1,4 @@
 import express from 'express';
-import dotenv from 'dotenv';
 import cors from 'cors';
 import { connectDB } from './models/mongodb/dbConnection.js';
 import { countryRouter } from './routes/countryRoutes.js';
@@ -7,10 +6,8 @@ import { countryRouter } from './routes/countryRoutes.js';
 const app = express();
 app.disable('x-powered-by');
 
-dotenv.config();
-
-const PORT = process.env.PORT || 3000;
-const MONGODB_URI = process.env.MONGODB_URI;
+const { PORT = 3000, MONGODB_URI = 'mongodb://localhost:27017/w3-challenge' } =
+  process.env;
 
 app.use(cors());
 app.use('/api/countries', countryRouter);
