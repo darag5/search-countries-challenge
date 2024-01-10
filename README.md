@@ -11,16 +11,14 @@ search-countries-challenge es una plataforma desarrollada con el stack MEAN cuyo
 Para levantar correctamente este proyecto se requieren minimamente los siguientes requisitos:
 
 - [Node.js](https://nodejs.org/)
+- Instala pnpm: `npm install -g pnpm` o visita el sitio oficial de [pnpm](https://pnpm.io/) para otras alternativas de instalación.
 - Cuenta en [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) (o una instancia local de MongoDB)
 
 ## Instalación
 
 1. Clona el repositorio: `git clone https://github.com/darag5/search-countries-challenge.git`
-2. Navega al directorio de la aplicación: `cd search-countries-challenge`
-3. Instala pnpm: `npm install -g pnpm` o visita el sitio oficial de [pnpm](https://pnpm.io/) para otras alternativas de instalación
-4. Instala las dependencias:
-   4.1 Naveva hasta la carpeta `client` e instala las dependencias: `pnpm install`
-   4.1 Naveva hasta la carpeta `server` e instala las dependencias: `pnpm install`
+2. Navega hacia el directorio de la aplicación: `cd search-countries-challenge`
+3. Instala dependencias: `pnpm install`
 
 ## Configuración
 
@@ -43,16 +41,21 @@ Para levantar correctamente este proyecto se requieren minimamente los siguiente
 
 ## Ejecución
 
-1. Inicia el cliente:
-   1.1 Navega hasta la carpeta `client` y ejecute: `ng serve`
-2. Inicie el server:
-   2.1 Navega hasta la carpeta `server` y ejecute: `pnpm run dev`
-3. Visita `http://localhost:4200` en tu navegador.
+1. Inicia la aplicación: `pnpm dev`
+2. Visita `http://localhost:4200` en tu navegador.
 
 ## Estructura del Proyecto
 
+search-countries-challenge es un monorepo que contiene las siguientes carpetas:
+
 - `server/`: Contiene el código del servidor Express.js.
 - `client/`: Contiene el código de la aplicación Angular.
+
+Este monorepo también contiene los siguientes archivos:
+
+- `pnpm-workspace.yaml`: este archivo contiene los nombres de cada paquete para que se pueda gestionar desde este unico paquete raíz de nivel superior.
+  (Para más info acerca de workspaces y como los maneja pnpm visitar: [PNPM-WORKSPACE](https://pnpm.io/es/workspaces))
+- `package.json`: este archivo contiene entre otras cosas las dependencias compartidas como así también los scripts para ejecutar los scripts de cada proyecto individualmente y scripts para ejecutar los proyectos conjuntamente.
 
 ## Licencia
 
