@@ -10,8 +10,9 @@ search-countries-challenge es una plataforma desarrollada con el stack MEAN cuyo
 
 Para levantar correctamente este proyecto se requieren minimamente los siguientes requisitos:
 
-- [Node.js](https://nodejs.org/)
-- Instala pnpm: `npm install -g pnpm` o visita el sitio oficial de [pnpm](https://pnpm.io/) para otras alternativas de instalación.
+- [Node.js v>=20](https://nodejs.org/)
+- [pnpm v>=8]: `npm install -g pnpm` o visita el sitio oficial de [pnpm](https://pnpm.io/) para otras alternativas de instalación.
+- [Angular v16](https://v16.angular.io/guide/setup-local#install-the-angular-cli): `npm install -g @angular/cli@16`
 - Cuenta en [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) (o una instancia local de MongoDB)
 
 ## Instalación
