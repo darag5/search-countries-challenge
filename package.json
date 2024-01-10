@@ -1,0 +1,17 @@
+{
+  "name": "search-countries-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:client": "pnpm --filter client build",
+    "start:client": "pnpm --filter client start",
+    "test:client": "pnpm --filter client test",
+    "start:api": "pnpm --filter server start",
+    "test:api": "pnpm --filter server test",
+    "dev": "pnpm run /start:*/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
