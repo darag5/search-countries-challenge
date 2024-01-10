@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 // models
 import { Country } from 'src/app/models/country.model';
@@ -12,6 +13,7 @@ import { CountryService } from 'src/app/services/country.service';
   styleUrls: ['./search-country.component.css'],
 })
 export class SearchCountryComponent {
+  filterText = new FormControl('');
   countries: Country[] = [];
   filteredCountries: Country[] = [];
   showPopulationTotalPercentage = false;
@@ -32,14 +34,14 @@ export class SearchCountryComponent {
     });
   }
 
-  filterResults(filter: string) {
-    if (!filter) {
+  filterResults() {
+    if (!this.filterText.value || this.filterText.value.length < 3) {
       this.filteredCountries = this.countries;
       this.showPopulationTotalPercentage = false;
       return;
     }
 
-    this.countryService.getFilteredCountries(filter).subscribe({
+    this.countryService.getFilteredCountries(this.filterText.value).subscribe({
       next: (data) => {
         this.filteredCountries = data;
         this.showPopulationTotalPercentage = true;

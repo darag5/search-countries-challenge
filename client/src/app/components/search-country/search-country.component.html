@@ -1,9 +1,19 @@
 <div class="container-fluid mt-5 d-flex flex-row justify-content-center align-content-center">
   <div class="card" style="width: 50%;">
     <div class="card-body">
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" id="search" type="search" placeholder="Buscar Países" #filter />
-        <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
+      <form role="search" novalidate>
+        <div class="form-group">
+          <div class="d-flex flew-row flex-fill">
+            <input class="form-control me-2" id="filterText" name="filterText" type="search" placeholder="Buscar Países"
+              minlength="3" [formControl]="filterText" />
+            <button class="primary" type="button" (click)="filterResults()">Search</button>
+          </div>
+          <div *ngIf="filterText.touched && filterText.invalid" class="alert alert-danger mt-">
+            <div *ngIf="filterText.hasError('minlength')">
+              Se requiere un parámetro de búsqueda de al menos 3 caracteres
+            </div>
+          </div>
+        </div>
       </form>
       <ng-container *ngIf="filteredCountries.length; else templateNoResults">
         <table class="table mt-3 text-center">
