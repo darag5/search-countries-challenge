@@ -8,6 +8,7 @@
     "dev": "nodemon ./app.js",
     "start": "node ./app.js",
     "migrate:up": "./node_modules/.bin/migrate-mongo up",
+    "migrate:down": "./node_modules/.bin/migrate-mongo down",
     "test": ""
   },
   "keywords": [],
