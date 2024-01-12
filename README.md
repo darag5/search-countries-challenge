@@ -82,6 +82,12 @@ Este proyecto utiliza la dependencia [migrate-mongo](https://www.npmjs.com/packa
 
 ## Ejecutar Tests
 
+Este proyecto utiliza pruebas automatizadas para garantizar la integridad y el rendimiento del código. A continuación, se detallan los scripts para ejecutar las pruebas:
+
+- **Ejectutar todas las pruebas:** `pnpm test`
+- **Ejecutar las pruebas del cliente:** `pnpm test:client`
+- **Deshacer las pruebas del server:** `pnpm test:server`
+
 ## Licencia
 
 Este proyecto está licenciado bajo la [Licencia MIT](LICENSE).
