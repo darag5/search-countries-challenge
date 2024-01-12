@@ -1,15 +1,12 @@
 // In this file you can configure migrate-mongo
+import { appConfig } from './config/config.js';
+
+const { dbUrl } = appConfig;
+console.log('migrate-mongo', dbUrl);
 
 const config = {
   mongodb: {
-    url: 'mongodb+srv://admin:adaHugo23@cluster0.qcdiuvd.mongodb.net/migrate-test',
-
-    options: {
-      useNewUrlParser: true, // removes a deprecation warning when connecting
-      useUnifiedTopology: true, // removes a deprecating warning when connecting
-      //   connectTimeoutMS: 3600000, // increase connection timeout to 1 hour
-      //   socketTimeoutMS: 3600000, // increase socket timeout to 1 hour
-    },
+    url: dbUrl,
   },
 
   // The migrations dir, can be an relative or absolute path. Only edit this when really necessary.
