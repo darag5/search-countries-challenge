@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 // models
@@ -12,7 +12,7 @@ import { CountryService } from 'src/app/services/country.service';
   templateUrl: './search-country.component.html',
   styleUrls: ['./search-country.component.css'],
 })
-export class SearchCountryComponent {
+export class SearchCountryComponent implements OnInit {
   searchForm!: FormGroup;
   submitted = false;
   countries: Country[] = [];
@@ -20,7 +20,9 @@ export class SearchCountryComponent {
   showPopulationTotalPercentage = false;
   countryService = inject(CountryService);
 
-  constructor() {
+  constructor() {}
+
+  ngOnInit() {
     this.searchForm = new FormGroup({
       filterText: new FormControl('', Validators.minLength(3)),
     });
