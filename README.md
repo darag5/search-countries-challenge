@@ -15,6 +15,19 @@ Para levantar correctamente este proyecto se requieren minimamente los siguiente
 - [Angular v16](https://v16.angular.io/guide/setup-local#install-the-angular-cli): `npm install -g @angular/cli@16`
 - Cuenta en [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) (o una instancia local de MongoDB)
 
+## Estructura del Proyecto
+
+search-countries-challenge es un monorepo que contiene las siguientes carpetas:
+
+- `server/`: Contiene el código del servidor Express.js.
+- `client/`: Contiene el código de la aplicación Angular.
+
+Este monorepo también contiene los siguientes archivos:
+
+- `pnpm-workspace.yaml`: este archivo contiene los nombres de cada paquete para que se pueda gestionar desde este unico paquete raíz de nivel superior.
+  (Para más info acerca de workspaces y como los maneja pnpm visitar: [PNPM-WORKSPACE](https://pnpm.io/es/workspaces))
+- `package.json`: este archivo contiene entre otras cosas las dependencias compartidas como así también los scripts para ejecutar los scripts de cada proyecto individualmente y scripts para ejecutar los proyectos conjuntamente.
+
 ## Instalación
 
 1. Clona el repositorio: `git clone https://github.com/darag5/search-countries-challenge.git`
@@ -36,27 +49,38 @@ Para levantar correctamente este proyecto se requieren minimamente los siguiente
    PORT=3000
    ```
 
-## Correr las migraciones
-
-## Ejecutar Tests
-
 ## Ejecución
 
-1. Inicia la aplicación: `pnpm dev`
-2. Visita `http://localhost:4200` en tu navegador.
+1. Si es la primera vez que inicia el proyecto, ejecuta las migraciones: `pnpm migrate:up`
+2. Inicia la aplicación: `pnpm dev`
+3. Visita `http://localhost:4200` en tu navegador.
 
-## Estructura del Proyecto
+## Migraciones de Base de Datos
 
-search-countries-challenge es un monorepo que contiene las siguientes carpetas:
+Este proyecto utiliza la dependencia [migrate-mongo](https://www.npmjs.com/package/migrate-mongo) para gestionar cambios en la base de datos. A continuación, se describen los pasos para ejecutar y gestionar migraciones.
 
-- `server/`: Contiene el código del servidor Express.js.
-- `client/`: Contiene el código de la aplicación Angular.
+### Requerimientos mínimos
 
-Este monorepo también contiene los siguientes archivos:
+1. Se requiere tener las configuraciones de base de datos actualizadas en el archivo `.env`.
 
-- `pnpm-workspace.yaml`: este archivo contiene los nombres de cada paquete para que se pueda gestionar desde este unico paquete raíz de nivel superior.
-  (Para más info acerca de workspaces y como los maneja pnpm visitar: [PNPM-WORKSPACE](https://pnpm.io/es/workspaces))
-- `package.json`: este archivo contiene entre otras cosas las dependencias compartidas como así también los scripts para ejecutar los scripts de cada proyecto individualmente y scripts para ejecutar los proyectos conjuntamente.
+   ```env
+   # Archivo .env
+
+   # Configuración de MongoDB Atlas
+   MONGODB_URI=your_mongodb_uri_here
+
+   ```
+
+2. Se requiere tener la dependecia instalada
+   `pnpm install`
+
+### Ejecutar Migraciones
+
+- **Genera nuevo archivo de migración:** `pnpm migrate-mongo create nombre_migracion`
+- **Ejecutar las migraciones:** `pnpm migrate-mongo up`
+- **Deshacer las migraciones:** `pnpm migrate-mongo down`
+
+## Ejecutar Tests
 
 ## Licencia
 
