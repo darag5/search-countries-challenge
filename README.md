@@ -36,7 +36,7 @@ Este monorepo también contiene los siguientes archivos:
 
 ## Configuración
 
-1. Crea un archivo `.env` en el directorio server.
+1. Crea un archivo `.env` en el directorio server o use el archivo `.env.example` y cambie el nombre a `.env`.
 2. Abre el archivo `.env` y setear las siguientes variables de entorno con tus datos:
 
    ```env
@@ -51,7 +51,7 @@ Este monorepo también contiene los siguientes archivos:
 
 ## Ejecución
 
-1. Si es la primera vez que inicia el proyecto, ejecuta las migraciones: `pnpm migrate:up`
+1. Si es la primera vez que inicia el proyecto, ejecuta las migraciones: `pnpm migrate:up`. Tener en cuenta que debe tener el archivo .env creado.
 2. Inicia la aplicación: `pnpm dev`
 3. Visita `http://localhost:4200` en tu navegador.
 
