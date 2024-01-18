@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SearchCountryComponent } from './components/search-country/search-country.component';
 
 const routes: Routes = [
-  { path: '', component: SearchCountryComponent },
+  { path: '', component: SearchCountryComponent, title: 'Countries' },
   {
     path: '**',
     redirectTo: '',
