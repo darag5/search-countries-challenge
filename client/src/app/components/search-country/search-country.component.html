@@ -6,7 +6,7 @@
           <div class="d-flex flew-row flex-fill">
             <input class="form-control me-2" id="filterText" name="filterText" type="search" placeholder="Buscar Países"
               formControlName="filterText" />
-            <button class="primary" type="button">Buscar</button>
+            <button class="primary" type="submit">Buscar</button>
           </div>
           <div *ngIf="submitted && f['filterText'].errors" class="alert alert-danger mt-">
             <div *ngIf="f['filterText'].hasError('minlength')">
